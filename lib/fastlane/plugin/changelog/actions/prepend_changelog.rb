@@ -1,11 +1,11 @@
 module Fastlane
     module Actions
-      class AppendChangelogAction < Action
+      class PrependChangelogAction < Action
         def self.run(params)
           changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
           changelog_path = Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
   
-          UI.message "Starting to append new section to '#{changelog_path}'"
+          UI.message "Starting to prepend new section to '#{changelog_path}'"
   
           # Read & update file content
           file_content = ""
@@ -39,11 +39,11 @@ module Fastlane
         #####################################################
   
         def self.description
-          "Appends new content section to the start of your project CHANGELOG.md file"
+          "Prepends new content section to your project CHANGELOG.md file"
         end
   
         def self.details
-          "Use this action to append a new changes section to the start of your project CHANGELOG.md"
+          "Use this action to prepend a new changes section to your project CHANGELOG.md"
         end
   
         def self.available_options
